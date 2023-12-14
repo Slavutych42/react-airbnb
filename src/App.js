@@ -6,6 +6,12 @@ import Price from "./components/price"
 // import Box from "./components/box"
 import RoomList from "./components/room-list"
 import Description from "./components/description"
+import Details from "./components/details"
+import Amenities from "./components/amenities"
+import Contact from "./components/contact"
+import Additional from "./components/additional"
+import GuestReviews from "./components/guestReviews"
+import NearbyAttractions from "./components/nearbyAttractions"
 
 function App() {
   const data = {
@@ -175,7 +181,30 @@ function App() {
             />
             <RoomList list={data.roomTypes}/>
             <Description title="Опис" children={data.description}/>
+            <Details 
+              bedrooms={data.property_details.bedrooms}
+              baths={data.property_details.baths}
+              beds={data.property_details.beds}
+              guests={data.property_details.guests}
+            />
             <Description title="Про сусідів" children={data.neighborhood_info}/>
+            <Amenities/>
+            <Contact
+              name={data.contact_info.name}
+              response_rate={data.contact_info.response_rate}
+              response_time={data.contact_info.response_time}
+              info={data.contact_info.info}
+              phone={data.contact_info.phone}
+            />
+            <Additional
+              house_rules={data.additional_properties.house_rules}
+              cancellation_policy={data.additional_properties.cancellation_policy}
+              local_transportation={data.additional_properties.local_transportation}
+              host_languages={data.additional_properties.host_languages}
+              special_offers={data.additional_properties.special_offers}
+            />
+            <GuestReviews guestReviews={data.guestReviews}/>
+            <NearbyAttractions nearbyAttractions={data.nearbyAttractions}/>
           </Page>;
 }
 

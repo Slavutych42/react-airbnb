@@ -3,13 +3,13 @@ import Heading from "../heading"
 import Box from "../box"
 import "./index.css"
 
-export default function RoomList({ list })  {
+export default function RoomList({ guestReviews })  {
     return (
         <div className="room__block">
             <Heading>Типи номерів</Heading>
 
             <div className="room__list">
-                {list.map(({ id, ...rest }) => (
+                {guestReviews.map(({ id, ...rest }) => (
                     <Fragment key={id}>
                         <Item { ...rest }/>
                     </Fragment>
@@ -19,14 +19,13 @@ export default function RoomList({ list })  {
     )
 }
 
-function Item ({ type, pricePerNight: price, currency, capacity }) {
+function Item ({ guestName, rating, review }) {
     return (
         <Box className="room">
-            <span className="room__title">{type}</span>
-            <span className="room__info">Кількість гостей: {capacity}</span>
+            <span className="room__title">{guestName}</span>
+            <span className="room__info">Рейтинг: {rating}</span>
             <span className="room__price">
-                {currency}
-                {price}
+                {review}
             </span>
         </Box>
     )
